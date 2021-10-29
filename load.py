@@ -379,7 +379,7 @@ def load(args):
             faces = data_dict['facess'][sample_idx]
             gender = data_dict['genders'][sample_idx]
 
-            mesh_measurements = MeshMeasurements(gender, verts, faces, noise_std=2.)
+            mesh_measurements = MeshMeasurements(gender, verts, faces, noise_std=args.noise)
 
             weights_in.append(mesh_measurements.weight)
             measurements_all.append(mesh_measurements.apmeasurements)
@@ -393,8 +393,7 @@ def load(args):
         weights_in = np.load(regressor_path)
         measurements_all = np.load(os.path.join(data_dir, 'measurements.npy'))
 
-    shapes = data_dict['shapes'][:, 0] if len(data_dict['shapes'].shape) == 3 else data_dict['shapes']
-    return weights_in, shapes, measurements_all, data_dict['genders']
+    return weights_in, measurements_all, data_dict['genders']
 
 
 def load_star(args):

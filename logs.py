@@ -16,14 +16,5 @@ def log_errors(params_errors, params_stds, measurement_errors, measurement_stds,
     print(f'\nMean: {measurement_errors.mean() * 1000:.6f}, {measurement_stds.mean() * 1000:.6f}')
 
 
-def log_feature_importances(model, args):
-    print('\nFEATURE IMPORTANCES\n===================')
-    feature_labels = Regressor.get_labels(args)
-    importances = Models.feature_importances(model)
-    for feat_idx in range(importances.shape[1]):
-        print(f'{feature_labels[feat_idx]}: {importances[:, feat_idx]}')
-
-
-def log(model, args, params_errors, params_stds, measurement_errors, measurement_stds, s2s_dists, s2s_stds):
+def log(params_errors, params_stds, measurement_errors, measurement_stds, s2s_dists, s2s_stds):
     log_errors(params_errors, params_stds, measurement_errors, measurement_stds, s2s_dists, s2s_stds)
-    log_feature_importances(model, args)

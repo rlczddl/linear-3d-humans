@@ -18,10 +18,10 @@ def surface2surface_dist(pred_verts, gt_verts):
     return np.linalg.norm(pred_verts - gt_verts, axis=1)
 
 
-def evaluate(y_predict, y_target, genders, mode='measurements'):
-    if mode == 'measurements':
-        return np.zeros(10), np.zeros(10), np.mean(np.abs(y_predict - y_target), axis=0), \
-            np.std(np.abs(y_predict - y_target), axis=0), np.empty(0), np.empty(0)
+def evaluate(y_predict, y_target, genders):
+    return np.zeros(10), np.zeros(10), np.mean(np.abs(y_predict - y_target), axis=0), \
+        np.std(np.abs(y_predict - y_target), axis=0), np.empty(0), np.empty(0)
+    '''
     else:
         params_errors = []
         measurement_errors = []
@@ -58,3 +58,4 @@ def evaluate(y_predict, y_target, genders, mode='measurements'):
         surface2surface_stds = np.std(surface2surface_dists, axis=0)
 
         return params_means, params_stds, measurement_means, measurement_stds, surface2surface_means, surface2surface_stds
+    '''

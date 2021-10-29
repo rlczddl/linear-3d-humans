@@ -198,7 +198,7 @@ def prepare_3dpw():
                 print(fname, subject_idx, frame_idx)
                 gender = data['genders'][subject_idx]
                 gender_idx = 0 if gender == 'm' else 1
-                data_dict['genders'].append(0 if gender == 'm' else 1)
+                data_dict['genders'][gender_idx].append(gender_idx)
 
                 data_dict['poses'][gender_idx].append(data['poses'][subject_idx][frame_idx])
                 data_dict['shapes'][gender_idx].append(shape)
